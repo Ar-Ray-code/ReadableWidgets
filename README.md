@@ -1,4 +1,4 @@
-# ReadableWidgets
+# ReadableWidgets [WIP]
 GUI configuration in YAML format.
 
 
