@@ -1,0 +1,142 @@
+WINDOW:
+  type: window
+  x: 0
+  y: 0
+  width: 700
+  height: 920
+  title: "calc"
+image:
+  type: image
+  x_center: 350
+  y_center: 460
+  rect:
+    width: 700
+    height: 920
+  style:
+    background-image: url(../image/back-image.png)
+style_common:
+  type: stylesheet
+  style:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/color/style_blue.yaml
+      key: style_common
+button_1:
+  type: qpushbutton
+  rect:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/rect/basic_button.yaml
+      key: basic_button
+  x_center: 150
+  y_center: 400
+  text: "1"
+button_2:
+  type: qpushbutton
+  x_center: 350
+  y_center: 400
+  rect:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/rect/basic_button.yaml
+      key: basic_button
+  text: "2"
+button_3:
+  type: qpushbutton
+  x_center: 550
+  y_center: 400
+  rect:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/rect/basic_button.yaml
+      key: basic_button
+  text: "3"
+button_4:
+  type: qpushbutton
+  x_center: 150
+  y_center: 500
+  rect:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/rect/basic_button.yaml
+      key: basic_button
+  text: "4"
+button_5:
+  type: qpushbutton
+  x_center: 350
+  y_center: 500
+  rect:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/rect/basic_button.yaml
+      key: basic_button
+  text: "5"
+button_6:
+  type: qpushbutton
+  x_center: 550
+  y_center: 500
+  rect:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/rect/basic_button.yaml
+      key: basic_button
+  text: "6"
+button_7:
+  type: qpushbutton
+  x_center: 150
+  y_center: 600
+  rect:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/rect/basic_button.yaml
+      key: basic_button
+  text: "7"
+button_8:
+  type: qpushbutton
+  x_center: 350
+  y_center: 600
+  rect:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/rect/basic_button.yaml
+      key: basic_button
+  text: "8"
+button_9:
+  type: qpushbutton
+  x_center: 550
+  y_center: 600
+  rect:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/rect/basic_button.yaml
+      key: basic_button
+  text: "9"
+button_plus:
+  type: qpushbutton
+  x_center: 150
+  y_center: 700
+  rect:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/rect/basic_button.yaml
+      key: basic_button
+  text: "+"
+button_0:
+  type: qpushbutton
+  x_center: 350
+  y_center: 700
+  rect:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/rect/basic_button.yaml
+      key: basic_button
+  text: "0"
+button_equal:
+  type: qpushbutton
+  x_center: 550
+  y_center: 700
+  rect:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/rect/basic_button.yaml
+      key: basic_button
+  text: "="
+lcd:
+  lcd_number:
+  type: qlcdnumber
+  x_center: 350
+  y_center: 200
+  rect:
+    width: 400
+    height: 100
+  style:
+    include:
+      path: https://raw.githubusercontent.com/Ar-Ray-code/PyamlQt/main/yaml/color/style_red.yaml
+      key: style_common
