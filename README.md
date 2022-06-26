@@ -10,6 +10,5 @@ GUI configuration in YAML format.
 | PySide2 | ✔ |
 | Tkinter | |
 | Kivy | |
-| PySimpleGUI | |
 | wxPython | |
 
