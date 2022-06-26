@@ -6,6 +6,7 @@ GUI configuration in YAML format.
 
 | Target | Suppport |
 | --- | --- |
+| DearPyGUI | |
 | PySide2 | ✔ |
 | Tkinter | |
 | Kivy | |
