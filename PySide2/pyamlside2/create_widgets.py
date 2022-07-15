@@ -12,6 +12,7 @@ qt6_mode = True
 # create_spinbox
 # ----------------------------------------------------------------------------
 
+
 class create_widgets:
     def __init__(self):
         pass
@@ -31,7 +32,6 @@ class create_widgets:
 
             target.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
 
-
         elif config.type == "qlcdnumber":
             target = QtWidgets.QLCDNumber(self)
             target.setFont(QtGui.QFont(config.font, config.font_size))
@@ -39,15 +39,15 @@ class create_widgets:
         elif config.type == "qprogressbar":
             target = QtWidgets.QProgressBar(self)
             target.setFont(QtGui.QFont(config.font, config.font_size))
-            
+
             target.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-            
+
         elif config.type == "qlineedit":
             target = QtWidgets.QLineEdit(self)
             target.setFont(QtGui.QFont(config.font, config.font_size))
-            
+
             target.setAlignment(QtCore.Qt.AlignmentFlag.AlignTop)
-            
+
         elif config.type == "qcheckbox":
             target = QtWidgets.QCheckBox(self)
             target.resize(config.width, config.height)

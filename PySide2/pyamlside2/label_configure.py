@@ -190,7 +190,8 @@ class label_configure:
                             print("------------------")
                             print("image_path: " + image_path)
                             print("------------------")
-                        self.stylesheet_str += key + ": url(" + image_path + ");"
+                        self.stylesheet_str += key + \
+                            ": url(" + image_path + ");"
                     else:
                         self.stylesheet_str += key + ": " + str(value) + "; "
         else:

@@ -2,6 +2,7 @@ import setuptools
 import re
 from os import path
 
+
 def get_version():
     with open("pyamlside2/__init__.py", "r") as f:
         version = re.search(
@@ -9,6 +10,7 @@ def get_version():
             f.read(), re.MULTILINE
         ).group(1)
     return version
+
 
 readme_path = path.abspath(path.dirname(__file__))
 with open(path.join(readme_path, 'README.md'), encoding='utf-8') as f:
