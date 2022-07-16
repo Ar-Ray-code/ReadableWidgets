@@ -16,13 +16,6 @@ def attrib_parse(input_element: Element) -> object_propaties:
     mygeometry_found = False
     for child in input_element:
         if child.attrib['as'] == 'geometry':
-            # if has_pxpoint(child) == True:
-            # {'x': '260', 'y': '160', 'width': '120', 'height': '60', 'as': 'geometry'}
-
-            # print(child.attrib)
-            # print(type(child.attrib))
-            # for key in child.attrib:
-            #     print(key)
             if 'x' in child.attrib:
                 widget.rect.x_left = int(child.attrib['x'])
             else:
@@ -189,40 +182,4 @@ if __name__ == '__main__':
     # XML ファイルから ElementTree オブジェクトを生成
     xmlfile = '../drawio_xml/example_gui.xml'
     xml2yaml(xmlfile)
-    # tree = ElementTree.parse(xmlfile)
-
-    # title_added = False
-    # title = object_propaties()
-
-    # widgets = []
-    # elem = tree.getroot()
-    # # next
-    # for child in elem:
-    #     for child2 in child:
-    #         if title_added == False:
-    #             title.rect.x_left = 0
-    #             title.rect.y_top = 0
-    #             title.rect.width = child2.attrib["dx"]
-    #             title.rect.height = child2.attrib["dy"]
-
-    #             title.widget_type = "window"
-    #             title.widget_id = "WINDOW"
-    #             title.text = xmlfile.split('/')[-1].split('.')[0]
-
-    #             widgets.append(title)
-    #             title_added = True
-
-    #         for child3 in child2:
-    #             #mxGraphModel
-    #             for child4 in child3:
-    #                 widgets.append(attrib_parse(child4))
-
-    # txt = ""
-    # for _widget in widgets:
-    #     txt += generate_yaml(_widget)
-
-    # # print(txt)
-    # # save to yaml?
-    # with open('./example_gui.yaml', 'w') as f:
-    #     f.write(txt)
     print("done")
