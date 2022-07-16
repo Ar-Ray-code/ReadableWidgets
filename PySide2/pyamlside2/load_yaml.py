@@ -3,6 +3,7 @@ import os
 
 from pyamlside2.mainwindow import PyamlSide2Window
 from PySide2.QtWidgets import QApplication
+from PySide2 import QtWidgets
 
 
 class MainWindow(PyamlSide2Window):
@@ -11,10 +12,43 @@ class MainWindow(PyamlSide2Window):
         print(args)
         if (len(args) == 2):
             super().__init__(args[1])
+
+            menuList = QtWidgets.QMenu(self)
+            # add menubar
+            action1 = QtWidgets.QAction("reload", self)
+            action1.triggered.connect(self.reload)
+
+            action2 = QtWidgets.QAction("select file", self)
+            action2.triggered.connect(self.select_file)
+
+            menuList.addAction(action1)
+            menuList.addAction(action2)
+
+            menu_button = QtWidgets.QPushButton("Menu", self)
+            menu_button.setMenu(menuList)
+
+
             self.show()
         else:
             print("No args.")
             sys.exit()
+
+    def reload(self):
+        # self.close()
+        # self.__init__(sys.argv)
+        os.execv(sys.argv[0], sys.argv)
+
+    def select_file(self):
+        # widget
+        file_dialog = QtWidgets.QFileDialog()
+        # xml or yaml
+        file_dialog.setNameFilters(["YAML (*.yaml)", "XML (*.xml)"])
+        # open file
+        file_dialog.setAcceptMode(QtWidgets.QFileDialog.AcceptOpen)
+        # select file
+        if file_dialog.exec_():
+            file_path = file_dialog.selectedFiles()[0]
+            os.execv(sys.argv[0], [sys.argv[0], file_path])
 
 
 def entry_point():
