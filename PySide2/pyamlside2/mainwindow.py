@@ -38,11 +38,22 @@ class PyamlSide2Window(QMainWindow):
             yaml_data = yaml.load(f, Loader=yaml.FullLoader)
         # unique key = WINDOW
         window_data = yaml_data["WINDOW"]
-        self.width = window_data["width"]
-        self.height = window_data["height"]
-        self.x = window_data["x"]
-        self.y = window_data["y"]
-        self.title = window_data["title"]
+
+        if "width" in window_data:
+            self.width = window_data["width"]
+            self.height = window_data["height"]
+            self.title = window_data["title"]
+        else:
+            self.width = window_data["rect"]["width"]
+            self.height = window_data["rect"]["height"]
+            self.title = window_data["text"]
+
+        if "x" in window_data:
+            self.x = window_data["x"]
+            self.y = window_data["y"]
+        elif "x_left" in window_data:
+            self.x = window_data["x_left"]
+            self.y = window_data["y_top"]
 
 # Template ================================================================
     def create_all_widgets(self) -> dict:

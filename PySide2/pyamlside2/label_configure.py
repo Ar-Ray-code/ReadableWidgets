@@ -6,8 +6,31 @@ import urllib.request
 
 DEBUG_FLAG = True
 
+LEFT = 0
+CENTER = 1
+RIGHT = 2
 
-class label_configure:
+class widget_configure:
+    def __init__(self):
+        self.x_center = 0
+        self.y_center = 0
+        self.x_left = 0
+        self.x_right = 0
+        self.y_top = 0
+        self.width = 50
+        self.height = 50
+        self.text = ""
+        self.items = []
+        self.max = 100
+        self.min = 0
+        self.step = 1
+        self.default = 0
+        self.stylesheet_str = ""
+        self.font = "Arial"
+        self.font_size = 10
+
+
+class label_configure(widget_configure):
     def is_url(self, path: str) -> bool:
         pattern = "https?://[\w/:%#\$&\?\(\)~\.=\+\-]+"
         if re.match(pattern, path):
@@ -16,9 +39,12 @@ class label_configure:
             return False
 
     def __init__(self, yaml_abs_path: str, target_key: str) -> None:
+        super().__init__()
         self.stylesheet_str = str()
         self.yaml_abs_path_file = yaml_abs_path
         self.target_key = target_key
+
+        self.position = LEFT
 
         self.debug = DEBUG_FLAG
 
@@ -65,87 +91,58 @@ class label_configure:
             print("type is undefined.")
             sys.exit()
 
+        # switching position 1 ------------------
         if "x_center" in self.yaml_data:
-            self.x_center = self.yaml_data["x_center"]
-        else:
-            self.x_center = 0
-
+            self.position = CENTER
+            self.x_center = int(self.yaml_data["x_center"])
         if "y_center" in self.yaml_data:
-            self.y_center = self.yaml_data["y_center"]
-        else:
-            self.y_center = 0
+            self.y_center = int(self.yaml_data["y_center"])
+        # switching position 2 ------------------
+        if "x_left" in self.yaml_data:
+            self.position = LEFT
+            self.x_left = int(self.yaml_data["x_left"])
+        # switching position 3 ------------------
+        if "x_right" in self.yaml_data:
+            self.position = RIGHT
+            self.x_right = int(self.yaml_data["x_right"])
+
+        if "y_top" in self.yaml_data:
+            self.y_top = int(self.yaml_data["y_top"])
 
         if "width" in self.yaml_data:
-            self.width = self.yaml_data["width"]
-        else:
-            self.width = 50
+            self.width = int(self.yaml_data["width"])
 
         if "height" in self.yaml_data:
-            self.height = self.yaml_data["height"]
-        else:
-            self.height = 50
+            self.height = int(self.yaml_data["height"])
 
         if "text" in self.yaml_data:
             self.text = self.yaml_data["text"]
-        else:
-            self.text = ""
-        if "font_size" in self.yaml_data:
-            self.font_size = self.yaml_data["font_size"]
-        else:
-            self.font_size = 10
-
-        if "font_color" in self.yaml_data:
-            self.font_color = self.yaml_data["font_color"]
-        else:
-            self.font_color = "#000000"
-
-        if "background_color" in self.yaml_data:
-            self.background_color = self.yaml_data["background_color"]
-        else:
-            self.background_color = ""
-
-        if "font" in self.yaml_data:
-            self.font = self.yaml_data["font"]
-        else:
-            self.font = "Arial"
-
-        if "font_bold" in self.yaml_data:
-            self.font_bold = self.yaml_data["font_bold"]
-        else:
-            self.font_bold = False
 
         if "items" in self.yaml_data:
             self.items = self.yaml_data["items"]
-        else:
-            self.items = []
 
         if "max" in self.yaml_data:
-            self.max = self.yaml_data["max"]
-        else:
-            self.max = 100
+            self.max = int(self.yaml_data["max"])
 
         if "min" in self.yaml_data:
-            self.min = self.yaml_data["min"]
-        else:
-            self.min = 0
+            self.min = int(self.yaml_data["min"])
 
         if "step" in self.yaml_data:
-            self.step = self.yaml_data["step"]
-        else:
-            self.step = 1
+            self.step = int(self.yaml_data["step"])
 
         if "default" in self.yaml_data:
-            self.default = self.yaml_data["default"]
-        else:
-            self.default = 0
+            self.default = int(self.yaml_data["default"])
 
-        # if "path" in self.yaml_data:
-        #     self.path = self.yaml_data["path"]
-        #     if script_dir != "":
-        #         self.path = script_dir + self.path
-        #         self.path = os.path.abspath(self.path)
-        # else:
-        #     self.path = ""
+        if "style" in self.yaml_data:
+            if "font" in self.yaml_data["style"]:
+                font_list = self.yaml_data["style"]["font"].split(" ")
+
+                for fl_s in font_list:
+                    if fl_s.endswith("px") :
+                        self.font_size = int(fl_s.replace("px", ""))
+
+            if "font-family" in self.yaml_data["style"]:
+                self.font = self.yaml_data["style"]["font-family"]
 
     # StyleSheet ---------------------------------------------------------------
         if "style" in self.yaml_data:
@@ -175,7 +172,7 @@ class label_configure:
                     self.stylesheet_str = yaml.load(f, Loader=yaml.FullLoader)
                 self.stylesheet_str = label_configure(
                     path, key).stylesheet_str
-                print("stylesheet_str: " + str(self.stylesheet_str))
+                # print("stylesheet_str: " + str(self.stylesheet_str))
 
             else:
                 for key, value in self.yaml_data["style"].items():
@@ -194,16 +191,13 @@ class label_configure:
                             ": url(" + image_path + ");"
                     else:
                         self.stylesheet_str += key + ": " + str(value) + "; "
-        else:
-            self.stylesheet_str = ""
+            # print(self.stylesheet_str)
 
     # Label Rect ---------------------------------------------------------------
         if "rect" in self.yaml_data:
-            # if include key
             if "include" in self.yaml_data["rect"]:
                 path = self.yaml_data["rect"]["include"]["path"]
                 key = self.yaml_data["rect"]["include"]["key"]
-                # is url or path
                 if self.is_url(path):
                     # is url -> save to ~/.cache/pyamlside2/yaml/***.yaml and load it
                     # exists ~/.cache/pyamlside2/yaml/***.yaml ?
@@ -235,34 +229,17 @@ class label_configure:
         self.height = self.rect_height
 
     # debug ---------------------------------------------------------------
-        if "debug" in self.yaml_data:
-            self.debug = self.yaml_data["debug"]
-        else:
-            self.debug = False
+        # if "debug" in self.yaml_data:
+        #     self.debug = self.yaml_data["debug"]
+        # else:
+        #     self.debug = False
 
-        self.x = self.x_center - self.width // 2
-        self.y = self.y_center - self.height // 2
-
-        # print all
-        if self.debug:
-            print("==========================================================")
-            print("loading " + self.yaml_abs_path_file)
-            print("type:" + str(self.type))
-            print("x_center: " + str(self.x_center))
-            print("y_center: " + str(self.y_center))
-            print("width: " + str(self.width))
-            print("height: " + str(self.height))
-            print("text: " + str(self.text))
-            print("font_size: " + str(self.font_size))
-            print("font_color: " + str(self.font_color))
-            print("background_color: " + str(self.background_color))
-            print("font: " + str(self.font))
-            print("font_bold: " + str(self.font_bold))
-            print("items: " + str(self.items))
-            print("max: " + str(self.max))
-            print("min: " + str(self.min))
-            print("step: " + str(self.step))
-            print("default: " + str(self.default))
-            print("path: " + str(self.path))
-            print("stylesheet_str: " + str(self.stylesheet_str))
-            print("==========================================================")
+        if self.position == LEFT:
+            self.x = self.x_left
+            self.y = self.y_top
+        elif self.position == CENTER:
+            self.x = self.x_center - self.width // 2
+            self.y = self.y_center - self.height // 2
+        elif self.position == RIGHT:
+            self.x = self.x_right - self.width
+            self.y = self.y_top - self.height
