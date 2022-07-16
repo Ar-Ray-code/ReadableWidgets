@@ -18,7 +18,7 @@ with open(path.join(readme_path, 'README.md'), encoding='utf-8') as f:
 
 setuptools.setup(
     name="pyamlside2",
-    packages=["pyamlside2"],
+    packages=["pyamlside2", "pyamlside2.drawio_parse", "pyamlside2.utils"],
 
     version=get_version(),
     author="Ar-Ray-code",

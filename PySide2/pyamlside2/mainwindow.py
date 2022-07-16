@@ -5,6 +5,9 @@ import os
 from pyamlside2.create_widgets import create_widgets
 from PySide2.QtWidgets import QMainWindow
 
+from .drawio_parse.parse import xml2yaml
+from .utils.get_yaml import get_yaml
+
 
 class PyamlSide2Window(QMainWindow):
     def __init__(self, yaml_path: str = None):
@@ -34,9 +37,7 @@ class PyamlSide2Window(QMainWindow):
         # ------------
 
     def init_window(self):
-        with open(self.yaml_abs_path, 'r') as f:
-            yaml_data = yaml.load(f, Loader=yaml.FullLoader)
-        # unique key = WINDOW
+        yaml_data = get_yaml(self.yaml_abs_path)
         window_data = yaml_data["WINDOW"]
 
         if "width" in window_data:
@@ -58,13 +59,12 @@ class PyamlSide2Window(QMainWindow):
 # Template ================================================================
     def create_all_widgets(self) -> dict:
         widgets, stylesheet_str = dict(), dict()
+        self.yaml_data = get_yaml(self.yaml_abs_path)
 
-        with open(self.yaml_abs_path, 'r') as f:
-            self.yaml_data = yaml.load(f, Loader=yaml.FullLoader)
 
-            for key in self.yaml_data:
-                data = create_widgets.create(self, self.yaml_abs_path, key)
-                widgets[key], stylesheet_str[key] = data[0], data[1]
+        for key in self.yaml_data:
+            data = create_widgets.create(self, self.yaml_abs_path, key)
+            widgets[key], stylesheet_str[key] = data[0], data[1]
 
         return widgets, stylesheet_str
 # =========================================================================

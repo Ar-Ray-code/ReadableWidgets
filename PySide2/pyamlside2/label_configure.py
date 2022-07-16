@@ -4,6 +4,9 @@ import yaml
 import re
 import urllib.request
 
+from .drawio_parse.parse import xml2yaml
+from .utils.get_yaml import get_yaml
+
 DEBUG_FLAG = True
 
 LEFT = 0
@@ -48,8 +51,9 @@ class label_configure(widget_configure):
 
         self.debug = DEBUG_FLAG
 
-        with open(self.yaml_abs_path_file, 'r') as f:
-            self.yaml_data = yaml.load(f, Loader=yaml.FullLoader)
+
+        self.yaml_data = get_yaml(self.yaml_abs_path_file)
+
         # exit when no yaml data
         if self.yaml_data is None:
             print("no yaml data")
