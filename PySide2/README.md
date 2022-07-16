@@ -56,11 +56,11 @@ if __name__ == '__main__':
 
 ## Test YAML 📝
 
-`pyamlqt_yaml` is preview feature app.
+`pyamlside2_yaml` is preview feature app.
 
 ```bash
-pyamlqt_yaml <yaml-file-path>
-# pyamlqt_yaml PyamlQt/yaml/chaos.yaml
+pyamlside2_yaml <yaml-file-path or draw.io xml-file>
+# pyamlside2_yaml PySide2/drawio_xml/example.xml
 ```
 
 ## Elements (dev)

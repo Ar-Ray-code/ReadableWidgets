@@ -1,6 +1,7 @@
 import setuptools
 import re
 from os import path
+import os
 
 
 def get_version():
@@ -11,6 +12,14 @@ def get_version():
         ).group(1)
     return version
 
+def package_files(directory):
+    paths = []
+    for (path, directories, filenames) in os.walk(directory):
+        for filename in filenames:
+            paths.append(os.path.join('..', path, filename))
+    return paths
+
+extra_files = package_files("yaml")
 
 readme_path = path.abspath(path.dirname(__file__))
 with open(path.join(readme_path, 'README.md'), encoding='utf-8') as f:
@@ -19,6 +28,7 @@ with open(path.join(readme_path, 'README.md'), encoding='utf-8') as f:
 setuptools.setup(
     name="pyamlside2",
     packages=["pyamlside2", "pyamlside2.drawio_parse", "pyamlside2.utils"],
+    package_data={"pyamlside2": extra_files},
 
     version=get_version(),
     author="Ar-Ray-code",

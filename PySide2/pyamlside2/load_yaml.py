@@ -5,33 +5,32 @@ from pyamlside2.mainwindow import PyamlSide2Window
 from PySide2.QtWidgets import QApplication
 from PySide2 import QtWidgets
 
-
 class MainWindow(PyamlSide2Window):
     def __init__(self, args):
         self.number = 0
         print(args)
         if (len(args) == 2):
             super().__init__(args[1])
-
-            menuList = QtWidgets.QMenu(self)
-            # add menubar
-            action1 = QtWidgets.QAction("reload", self)
-            action1.triggered.connect(self.reload)
-
-            action2 = QtWidgets.QAction("select file", self)
-            action2.triggered.connect(self.select_file)
-
-            menuList.addAction(action1)
-            menuList.addAction(action2)
-
-            menu_button = QtWidgets.QPushButton("Menu", self)
-            menu_button.setMenu(menuList)
-
-
-            self.show()
         else:
             print("No args.")
-            sys.exit()
+            # sys.exit()
+            super().__init__("../PySide2/yaml/header.yaml")
+
+        menuList = QtWidgets.QMenu(self)
+        # add menubar
+        action1 = QtWidgets.QAction("reload", self)
+        action1.triggered.connect(self.reload)
+
+        action2 = QtWidgets.QAction("select file", self)
+        action2.triggered.connect(self.select_file)
+
+        menuList.addAction(action1)
+        menuList.addAction(action2)
+
+        menu_button = QtWidgets.QPushButton("Menu", self)
+        menu_button.setMenu(menuList)
+
+        self.show()
 
     def reload(self):
         # self.close()

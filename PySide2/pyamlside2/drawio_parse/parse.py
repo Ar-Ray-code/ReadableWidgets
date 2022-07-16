@@ -17,10 +17,32 @@ def attrib_parse(input_element: Element) -> object_propaties:
     for child in input_element:
         if child.attrib['as'] == 'geometry':
             # if has_pxpoint(child) == True:
-            widget.rect.x_left = int(child.attrib['x'])
-            widget.rect.y_top = int(child.attrib['y'])
-            widget.rect.width = int(child.attrib['width'])
-            widget.rect.height = int(child.attrib['height'])
+            # {'x': '260', 'y': '160', 'width': '120', 'height': '60', 'as': 'geometry'}
+
+            # print(child.attrib)
+            # print(type(child.attrib))
+            # for key in child.attrib:
+            #     print(key)
+            if 'x' in child.attrib:
+                widget.rect.x_left = int(child.attrib['x'])
+            else:
+                widget.rect.x_left = 0
+
+            if 'y' in child.attrib:
+                widget.rect.y_top = int(child.attrib['y'])
+            else:
+                widget.rect.y_top = 0
+
+            if 'width' in child.attrib:
+                widget.rect.width = int(child.attrib['width'])
+            else:
+                widget.rect.width = 0
+
+            if 'height' in child.attrib:
+                widget.rect.height = int(child.attrib['height'])
+            else:
+                widget.rect.height = 0
+
             mygeometry_found = True
 
     if not mygeometry_found:
