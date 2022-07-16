@@ -8,12 +8,10 @@ from PySide2 import QtWidgets
 class MainWindow(PyamlSide2Window):
     def __init__(self, args):
         self.number = 0
-        print(args)
         if (len(args) == 2):
             super().__init__(args[1])
         else:
             print("No args.")
-            # sys.exit()
             super().__init__("../PySide2/yaml/header.yaml")
 
         menuList = QtWidgets.QMenu(self)
@@ -33,8 +31,6 @@ class MainWindow(PyamlSide2Window):
         self.show()
 
     def reload(self):
-        # self.close()
-        # self.__init__(sys.argv)
         os.execv(sys.argv[0], sys.argv)
 
     def select_file(self):

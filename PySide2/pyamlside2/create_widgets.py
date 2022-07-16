@@ -94,7 +94,8 @@ class create_widgets:
             target.setHidden(True)
 
         else:
-            print(config.type + " is not defined")
+            if config.type != "window":
+                print(config.type + " is not defined")
             target = QtWidgets.QLabel(self)
             target.setHidden(True)
 
