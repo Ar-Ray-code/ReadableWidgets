@@ -98,26 +98,26 @@ class label_configure(widget_configure):
         # switching position 1 ------------------
         if "x_center" in self.yaml_data:
             self.position = CENTER
-            self.x_center = int(self.yaml_data["x_center"])
+            self.x_center = int(float(self.yaml_data["x_center"]))
         if "y_center" in self.yaml_data:
-            self.y_center = int(self.yaml_data["y_center"])
+            self.y_center = int(float(self.yaml_data["y_center"]))
         # switching position 2 ------------------
         if "x_left" in self.yaml_data:
             self.position = LEFT
-            self.x_left = int(self.yaml_data["x_left"])
+            self.x_left = int(float(self.yaml_data["x_left"]))
         # switching position 3 ------------------
         if "x_right" in self.yaml_data:
             self.position = RIGHT
-            self.x_right = int(self.yaml_data["x_right"])
+            self.x_right = int(float(self.yaml_data["x_right"]))
 
         if "y_top" in self.yaml_data:
-            self.y_top = int(self.yaml_data["y_top"])
+            self.y_top = int(float(self.yaml_data["y_top"]))
 
         if "width" in self.yaml_data:
-            self.width = int(self.yaml_data["width"])
+            self.width = int(float(self.yaml_data["width"]))
 
         if "height" in self.yaml_data:
-            self.height = int(self.yaml_data["height"])
+            self.height = int(float(self.yaml_data["height"]))
 
         if "text" in self.yaml_data:
             self.text = self.yaml_data["text"]
@@ -126,16 +126,16 @@ class label_configure(widget_configure):
             self.items = self.yaml_data["items"]
 
         if "max" in self.yaml_data:
-            self.max = int(self.yaml_data["max"])
+            self.max = int(float(self.yaml_data["max"]))
 
         if "min" in self.yaml_data:
-            self.min = int(self.yaml_data["min"])
+            self.min = int(float(self.yaml_data["min"]))
 
         if "step" in self.yaml_data:
-            self.step = int(self.yaml_data["step"])
+            self.step = int(float(self.yaml_data["step"]))
 
         if "default" in self.yaml_data:
-            self.default = int(self.yaml_data["default"])
+            self.default = int(float(self.yaml_data["default"]))
 
         if "style" in self.yaml_data:
             if "font" in self.yaml_data["style"]:
@@ -143,7 +143,7 @@ class label_configure(widget_configure):
 
                 for fl_s in font_list:
                     if fl_s.endswith("px") :
-                        self.font_size = int(fl_s.replace("px", ""))
+                        self.font_size = int(float(fl_s.replace("px", "")))
 
             if "font-family" in self.yaml_data["style"]:
                 self.font = self.yaml_data["style"]["font-family"]

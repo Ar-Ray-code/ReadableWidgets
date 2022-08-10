@@ -17,22 +17,22 @@ def attrib_parse(input_element: Element) -> object_propaties:
     for child in input_element:
         if child.attrib['as'] == 'geometry':
             if 'x' in child.attrib:
-                widget.rect.x_left = int(child.attrib['x'])
+                widget.rect.x_left = int(float(child.attrib['x']))
             else:
                 widget.rect.x_left = 0
 
             if 'y' in child.attrib:
-                widget.rect.y_top = int(child.attrib['y'])
+                widget.rect.y_top = int(float(child.attrib['y']))
             else:
                 widget.rect.y_top = 0
 
             if 'width' in child.attrib:
-                widget.rect.width = int(child.attrib['width'])
+                widget.rect.width = int(float(child.attrib['width']))
             else:
                 widget.rect.width = 0
 
             if 'height' in child.attrib:
-                widget.rect.height = int(child.attrib['height'])
+                widget.rect.height = int(float(child.attrib['height']))
             else:
                 widget.rect.height = 0
 
