@@ -31,16 +31,16 @@ class MainWindow(PyamlSide2Window):
         self.timer = QtCore.QTimer(self)
         self.timer.timeout.connect(self.timer_update)
         self.timer.start(10)
-    
+
     def spinbox_update(self):
         self.value = self.widgets["spinbox"].value()
-    
+
     def button_update(self):
         if self.start_flag == False:
             self.start_flag = True
             self.widgets["start_stop_button"].setText('Stop')
             self.widgets["start_stop_button"].setStyleSheet(self.stylesheet["stop-stylesheet"])
-            
+
             self.time_val = int(time.time()) + 5
         else:
             self.start_flag = False
@@ -51,12 +51,12 @@ class MainWindow(PyamlSide2Window):
         # ask
         reply = QtWidgets.QMessageBox.question(self, 'Message', "Are you sure to quit?")
         if reply == QtWidgets.QMessageBox.StandardButton.No:
-            return    
+            return
         sys.exit()
 
     def timer_update(self):
         self.time_val = int(time.time())
-        
+
         if self.start_flag == True:
             self.number += 1
             if self.number >= 100:

@@ -1,7 +1,7 @@
 # from types import NoneType
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, SubElement, tostring
-from .propaties_class import object_propaties
+from pyamlside2.drawio_parse.propaties_class import object_propaties
 
 no_name_count = 0
 log = False
@@ -180,6 +180,7 @@ def xml2yaml(xmlfile: str) -> str:
 
 if __name__ == '__main__':
     # XML ファイルから ElementTree オブジェクトを生成
-    xmlfile = '../drawio_xml/example_gui.xml'
-    xml2yaml(xmlfile)
+    xmlfile = '../../drawio_xml/example.xml'
+    yaml_data = xml2yaml(xmlfile)
+    print(yaml_data)
     print("done")

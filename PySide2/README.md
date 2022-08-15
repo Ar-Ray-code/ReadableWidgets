@@ -24,7 +24,75 @@ pip install .
 python3 examples/chaos.py
 ```
 
+<br>
+
+## Tutorial
+
+
+### 1. create drawio-xml
+
+Open [draw.io](https://app.diagrams.net/).
+
+---
+
+Put the `Rounded Rectangle` and add text.
+
+<br>
+
++----------------------+
+
+| widget:unique-label  |
+
++----------------------+
+
+<br>
+
+- widget : widget name `pushbutton, label, ...`
+- unique-label : Unique label (also treated as a Key in Python).
+
+
+![](./image/drawio.png)
+
+> Don't use compression flag. (Please uncheck.)
+
+![](./image/compression_unchecked.png)
+
+### 2. 🏁 drawio-xml -> YAML & Python (simple conversion)
+
+```bash
+rw_gen_xml2all -i <input .xml> -o <output directory>
+```
+
+
+
+### 2-1. Generate YAML file from drawio-xml
+
+> Although it is possible to convert directly from drawio-xml, conversion to YAML is recommended for readability.
+
+```bash
+rw_gen_xml2yaml -i <input .xml> -o <output .yaml>
+```
+
+### 2-2. Generate Python file from YAML
+
+Create a sample Python program from a YAML file.
+
+```bash
+rw_gen_yaml2py -i <input .yaml> -o <output .py>
+```
+
+### 3. Run example python template
+
+```bash
+python3 <output .py (3rd step)> <input .yaml (3rd step)>
+```
+
+<br>
+
 ## Template
+
+<details>
+<summary>Previously (v0.3.2)</summary>
 
 See `examples/simple_gui.py`.
 
@@ -111,3 +179,4 @@ slider2: # keyname
     - b
     - c
 ```
+</details>
