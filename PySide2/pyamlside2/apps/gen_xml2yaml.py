@@ -1,7 +1,7 @@
 from pyamlside2.drawio_parse.parse import xml2yaml
 import argparse
 
-def parse():
+def entry_point():
     args = argparse.ArgumentParser()
     args.add_argument("-i", "--input", help="input xml file", required=True)
     args.add_argument("-o", "--output", help="output yaml file", required=True)
@@ -12,4 +12,4 @@ def parse():
     print("Done.")
 
 if __name__ == "__main__":
-    parse()
+    entry_point()

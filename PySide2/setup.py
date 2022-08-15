@@ -53,9 +53,10 @@ setuptools.setup(
     },
     entry_points={
         "console_scripts": [
-            "pyamlside2_yaml = pyamlside2.apps.load_yaml:entry_point",
-            "rw_xml2yaml = pyamlside2.apps.xml2yaml:parse",
-            "rw_gen_py = pyamlside2.apps.create_template:entry_point",
+            "rw_view_yaml2pyside2 = pyamlside2.apps.view_yaml2pyside2:entry_point",
+            "rw_gen_xml2yaml = pyamlside2.apps.gen_xml2yaml:entry_point",
+            "rw_gen_yaml2py = pyamlside2.apps.gen_yaml2py:entry_point",
+            "rw_gen_xml2all = pyamlside2.apps.gen_xml2all:entry_point",
         ],
     }
 )

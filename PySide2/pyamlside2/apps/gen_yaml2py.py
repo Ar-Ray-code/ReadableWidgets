@@ -1,4 +1,27 @@
-header ="""
+import sys
+import os
+from pyamlside2.label_configure import label_configure
+from pyamlside2.utils.get_yaml import get_yaml
+
+import argparse
+
+class generate_yaml2py():
+    def __init__(self):
+        self.tab = "    "
+        self.tab2 = "        "
+
+        self.widgets_keyword = {
+            "qpushbutton": "clicked",
+            "qlineedit": "textChanged",
+            "qcheckbox": "stateChanged",
+            "qcombobox": "currentIndexChanged",
+            "qspinbox": "valueChanged",
+            "qslider": "valueChanged",
+            "qprogressbar": "valueChanged",
+        }
+
+# Header - Middle - Footer ===================================
+        self.header ="""
 import sys
 
 from pyamlside2.mainwindow import PyamlSide2Window
@@ -15,12 +38,12 @@ class MainWindow(PyamlSide2Window):
 
 """
 
-middle ="""
+        self.middle ="""
         self.show()
 
 """
 
-footer ="""
+        self.footer ="""
 def entry_point():
     app = QApplication(sys.argv)
     window = MainWindow(sys.argv)
@@ -29,34 +52,13 @@ def entry_point():
 if __name__ == '__main__':
     entry_point()
 """
-
-import sys
-import os
-from pyamlside2.label_configure import label_configure
-from pyamlside2.utils.get_yaml import get_yaml
-
-import argparse
-
-class generate_template():
-    def __init__(self):
-        self.tab = "    "
-        self.tab2 = "        "
-
-        self.widgets_keyword = {
-            "qpushbutton": "clicked",
-            "qlineedit": "textChanged",
-            "qcheckbox": "stateChanged",
-            "qcombobox": "currentIndexChanged",
-            "qspinbox": "valueChanged",
-            "qslider": "valueChanged",
-            "qprogressbar": "valueChanged",
-        }
+# =============================================================
 
     def generate_py(self, input_yaml_path:str) -> str:
         yaml_abs_path = os.path.abspath(input_yaml_path)
 
         # add definition
-        export_py_str = header
+        export_py_str = self.header
         yaml_data = get_yaml(yaml_abs_path)
         for key in yaml_data:
             config = label_configure(yaml_abs_path, key)
@@ -65,7 +67,7 @@ class generate_template():
                 if widget_key in config.type:
                     export_py_str += self.tab2 + "self.widgets[\"" + key + "\"]." + self.widgets_keyword[widget_key] + ".connect(self." + key + "_update" + ")\n"
 
-        export_py_str += middle
+        export_py_str += self.middle
 
         for key in yaml_data:
             config = label_configure(yaml_abs_path, key)
@@ -96,7 +98,7 @@ class generate_template():
                     export_py_str += "\n"
                     break
 
-        export_py_str += footer
+        export_py_str += self.footer
         return export_py_str
 
 def entry_point():
@@ -105,7 +107,7 @@ def entry_point():
     parser.add_argument("--output", "-o", help="output py file", required=True)
     args = parser.parse_args()
 
-    gen_py = generate_template()
+    gen_py = generate_yaml2py()
     str_python = gen_py.generate_py(args.input)
     with open(args.output, "w") as f:
         f.write(str_python)
