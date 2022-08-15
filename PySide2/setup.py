@@ -27,7 +27,7 @@ with open(path.join(readme_path, 'README.md'), encoding='utf-8') as f:
 
 setuptools.setup(
     name="pyamlside2",
-    packages=["pyamlside2", "pyamlside2.drawio_parse", "pyamlside2.utils"],
+    packages=["pyamlside2", "pyamlside2.drawio_parse", "pyamlside2.utils", "pyamlside2.apps"],
     package_data={"pyamlside2": extra_files},
 
     version=get_version(),
@@ -53,7 +53,9 @@ setuptools.setup(
     },
     entry_points={
         "console_scripts": [
-            "pyamlside2_yaml = pyamlside2.load_yaml:entry_point",
+            "pyamlside2_yaml = pyamlside2.apps.load_yaml:entry_point",
+            "rw_xml2yaml = pyamlside2.apps.xml2yaml:parse",
+            "rw_gen_py = pyamlside2.apps.create_template:entry_point",
         ],
     }
 )
