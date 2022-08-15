@@ -28,6 +28,7 @@ python3 examples/chaos.py
 
 ## Tutorial
 
+
 ### 1. create drawio-xml
 
 Open [draw.io](https://app.diagrams.net/).
@@ -56,24 +57,31 @@ Put the `Rounded Rectangle` and add text.
 
 ![](./image/compression_unchecked.png)
 
+### 2. 🏁 drawio-xml -> YAML & Python (simple conversion)
 
-### 2. Generate YAML file from drawio-xml
+```bash
+rw_gen_xml2all -i <input .xml> -o <output directory>
+```
+
+
+
+### 2-1. Generate YAML file from drawio-xml
 
 > Although it is possible to convert directly from drawio-xml, conversion to YAML is recommended for readability.
 
 ```bash
-rw_xml2yaml -i <input .xml> -o <output .yaml>
+rw_gen_xml2yaml -i <input .xml> -o <output .yaml>
 ```
 
-### 3. Generate Python file from YAML
+### 2-2. Generate Python file from YAML
 
 Create a sample Python program from a YAML file.
 
 ```bash
-rw_gen_py -i <input .yaml> -o <output .py>
+rw_gen_yaml2py -i <input .yaml> -o <output .py>
 ```
 
-### 4. Run example python template
+### 3. Run example python template
 
 ```bash
 python3 <output .py (3rd step)> <input .yaml (3rd step)>
