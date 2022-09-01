@@ -8,7 +8,7 @@ from PySide2.QtWidgets import QApplication, QWidget, QFileDialog
 import sys
 import argparse
 
-class Application(QWidget):
+class QuestionWidget(QWidget):
     def __init__(self):
         super().__init__()
 
@@ -35,7 +35,10 @@ class Application(QWidget):
         print(selected_usb_device)
         sys.exit(0)
 
+def entry_point():
+    app = QApplication(sys.argv)
+    ex = QuestionWidget()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    ex = Application()
+    ex = QuestionWidget()

@@ -40,6 +40,10 @@ class QuestionWidget(QWidget):
         else:
             exit(1)
 
+def entry_point():
+    app = QApplication(sys.argv)
+    ex = QuestionWidget()
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ex = QuestionWidget()
