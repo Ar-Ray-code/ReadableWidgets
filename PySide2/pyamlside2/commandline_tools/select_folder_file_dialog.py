@@ -1,7 +1,6 @@
 #!/bin/python3
 # ===========================
 # Ar-Ray-code 2022
-# https://gist.github.com/Ar-Ray-code/ae1a68006ed304ea52b617f991aa3ec2
 # ===========================
 
 from PySide2.QtWidgets import QApplication, QWidget, QFileDialog
