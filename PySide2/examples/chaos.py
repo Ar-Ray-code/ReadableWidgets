@@ -9,6 +9,8 @@ from pyamlside2.mainwindow import PyamlSide2Window
 from PySide2 import QtCore, QtWidgets
 from PySide2.QtWidgets import QApplication
 
+from pyamlside2.commandline_tools.simple_widget import *
+
 YAML = os.path.join(os.path.dirname(__file__), "../yaml/chaos.yaml")
 
 class MainWindow(PyamlSide2Window):
@@ -49,8 +51,8 @@ class MainWindow(PyamlSide2Window):
 
     def exit(self):
         # ask
-        reply = QtWidgets.QMessageBox.question(self, 'Message', "Are you sure to quit?")
-        if reply == QtWidgets.QMessageBox.StandardButton.No:
+        reply = exec_messagebox("Are you sure to quit?", "question")
+        if reply =="No":
             return
         sys.exit()
 

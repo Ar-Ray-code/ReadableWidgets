@@ -1,6 +1,6 @@
-# commandline-tools
+# commandline-widgets
 
-The best technique for GUIing variables in shell scripts is to use command_line_tools.
+The best technique for GUIing variables in shell scripts is to use command_line_widgets.
 You can receive a string as a return value by installing it with pypi or invoking the corresponding script with a relative path.
 
 <br>
@@ -77,4 +77,23 @@ echo $ANS
 ```bash
 ANS=`python select_folder_file_dialog.py --title "select your file" --path ./`
 echo $AWS
+```
+
+<br>
+
+## Call from python
+
+commandline_widgets also can be called from python. 
+
+```python
+from pyamlside2.commandline_tools.simple_widget import *
+
+print("-----")
+print(exec_select_folder_file_dialog('title', './', False))
+print("-----")
+print(exec_messagebox('title', 'information'))
+print("-----")
+print(exec_question_lineedit('title', 'default'))
+print("-----")
+print(exec_question_select('title', ['a', 'b', 'c']))
 ```

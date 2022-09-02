@@ -1,7 +1,7 @@
 import subprocess
 
-def exec_messagebox(title: str, type: str):
-    output_string = subprocess.check_output(['messagebox', '--title', title, '--type', type])
+def exec_messagebox(title: str, message_type: str):
+    output_string = subprocess.check_output(['messagebox', '--title', title, '--type', message_type])
 
     return output_string.decode('utf-8').replace('\n','')
 
@@ -17,7 +17,6 @@ def exec_question_select(title: str, ans_list: list) -> str:
     return output_string.decode('utf-8').replace('\n','')
 
 def exec_select_folder_file_dialog(title: str, entry_point_pass: str, file_mode: bool=False, exts_str: str="*") -> str:
-    
     if file_mode:
         output_string = subprocess.check_output(['select_folder_file_dialog', '--title', title, '--file', '--path', entry_point_pass, '--exts', exts_str])
     output_string = subprocess.check_output(['select_folder_file_dialog', '--title', title, '--path', entry_point_pass])
