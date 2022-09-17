@@ -49,8 +49,8 @@ class MainWindow(PyamlSide2Window):
 
     def exit(self):
         # ask
-        reply = QtWidgets.QMessageBox.question(self, 'Message', "Are you sure to quit?")
-        if reply == QtWidgets.QMessageBox.StandardButton.No:
+        reply = exec_messagebox("Are you sure to quit?", "question")
+        if reply =="No":
             return
         sys.exit()
 

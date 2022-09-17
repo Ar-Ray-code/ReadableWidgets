@@ -6,7 +6,6 @@ from PySide2.QtWidgets import QApplication
 
 class MainWindow(PyamlSide2Window):
     def __init__(self):
-        self.number = 0
         yaml_path = os.path.join(os.path.dirname(__file__), "../yaml/chaos.yaml")
         super().__init__(yaml_path)
         self.show()

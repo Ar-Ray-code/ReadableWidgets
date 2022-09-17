@@ -29,7 +29,6 @@ from PySide2.QtWidgets import QApplication
 
 class MainWindow(PyamlSide2Window):
     def __init__(self, args):
-        self.number = 0
         if (len(args) == 2):
             super().__init__(args[1])
         else:
