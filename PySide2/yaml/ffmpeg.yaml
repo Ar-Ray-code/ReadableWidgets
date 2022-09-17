@@ -1,0 +1,247 @@
+WINDOW:
+  type: window
+  x: 0
+  y: 0
+  width: 300
+  height: 300
+  title: "ffmpeg-command"
+
+select_folder_input:
+  type: qpushbutton
+  x_center: 50
+  y_center: 100
+  rect:
+    width: 80
+    height: 20
+  text: "input video"
+  style:
+    font: 10px
+    color: #ff0000
+    background-color: blue
+    font-family: Ubuntu
+
+lineedit_input:
+  type: qlineedit
+  x_center: 150
+  y_center: 100
+  rect:
+    width: 100
+    height: 20
+  text: "Line Edit"
+  style:
+    font: 10px
+    color: black
+    font-family: Ubuntu
+
+
+select_folder_output:
+  type: qpushbutton
+  x_center: 50
+  y_center: 125
+  rect:
+    width: 80
+    height: 20
+  text: "output video"
+  style:
+    font: 10px
+    color: #ff0000
+    background-color: red
+    font-family: Ubuntu
+
+lineedit_output:
+  type: qlineedit
+  x_center: 150
+  y_center: 125
+  rect:
+    width: 100
+    height: 20
+  text: "./output"
+  style:
+    font: 10px
+    color: black
+    font-family: Ubuntu
+
+mute_check:
+  type: qcheckbox
+  x_center: 150
+  y_center: 150
+  rect:
+    width: 100
+    height: 20
+  text: "Mute"
+  style:
+    font: 10px
+    color: #ff00f0
+    font-family: Ubuntu
+
+size_label:
+  type: qlabel
+  x_center: 40
+  y_center: 200
+  rect:
+    width: 80
+    height: 20
+  text: "size (WxH)"
+  style:
+    font: 10px
+    color: white
+    font-family: Ubuntu
+
+width_spinbox:
+  type: qspinbox
+  x_center: 100
+  y_center: 200
+  rect:
+    width: 50
+    height: 30
+  style:
+    color: white
+    font-family: Ubuntu
+
+cross_label:
+  type: qlabel
+  x_center: 135
+  y_center: 200
+  rect:
+    width: 30
+    height: 20
+  text: "x"
+  style:
+    font: 15px
+    color: white
+    font-family: Ubuntu
+
+height_spinbox:
+  type: qspinbox
+  x_center: 170
+  y_center: 200
+  rect:
+    width: 50
+    height: 30
+  style:
+    color: white
+    font-family: Ubuntu
+
+width_minus_1:
+  type: qcheckbox
+  x_center: 130
+  y_center: 225
+  rect:
+    width: 100
+    height: 20
+  text: "-1"
+  style:
+    font: 10px
+    color: #ff00f0
+    font-family: Ubuntu
+
+height_minus_1:
+  type: qcheckbox
+  x_center: 200
+  y_center: 225
+  rect:
+    width: 100
+    height: 20
+  text: "-1"
+  style:
+    font: 10px
+    color: #ff00f0
+    font-family: Ubuntu
+
+vcodec_label:
+  type: qlabel
+  x_center: 45
+  y_center: 250
+  rect:
+    width: 80
+    height: 20
+  text: "codec (video)"
+  style:
+    font: 10px
+    color: white
+    font-family: Ubuntu
+
+acodec_label:
+  type: qlabel
+  x_center: 45
+  y_center: 280
+  rect:
+    width: 80
+    height: 20
+  text: "codec (audio)"
+  style:
+    font: 10px
+    color: white
+    font-family: Ubuntu
+
+vcodec:
+  type: qcombobox
+  x_center: 130
+  y_center: 250
+  rect:
+    width: 100
+    height: 50
+  items:
+    - h264
+    - libx264
+    - h264_qsv
+    - h264_nvenc
+    - h264_vaapi
+    - hevc
+    - hevc_qsv
+    - hevc_nvenc
+    - flv1
+    - mjpeg
+    - mjpeg_qsv
+    - mpeg1video
+    - mpeg2video
+    - mpeg2_qsv
+    - msvideo1
+    - vp3
+    - vp6
+    - vp6a
+    - vp6f
+    - vp7
+    - vp8
+    - vp9
+    - vp9_qsv
+    - wmv1
+    - wmv2
+    - wmv3
+
+acodec:
+  type: qcombobox
+  x_center: 130
+  y_center: 280
+  rect:
+    width: 100
+    height: 50
+  items:
+    - mp3
+    - aac
+    - libmp3lame
+    - alac
+    - flac
+    - on2
+    - mp1
+    - mp2
+    - opus
+    - pcm_s16le
+    - pcm_s24le
+    - vorbis
+    - wmav1
+    - wmav2
+
+convert_button:
+  type: qpushbutton
+  x_center: 250
+  y_center: 270
+  rect:
+    width: 80
+    height: 50
+  text: "Convert"
+  style:
+    font: bold 10px
+    color: #ff0000
+    background-color: green
+    font-family: Ubuntu

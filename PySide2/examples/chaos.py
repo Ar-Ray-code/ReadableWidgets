@@ -9,8 +9,6 @@ from pyamlside2.mainwindow import PyamlSide2Window
 from PySide2 import QtCore, QtWidgets
 from PySide2.QtWidgets import QApplication
 
-from pyamlside2.commandline_tools.simple_widget import *
-
 YAML = os.path.join(os.path.dirname(__file__), "../yaml/chaos.yaml")
 
 class MainWindow(PyamlSide2Window):

@@ -16,7 +16,7 @@ class MainWindow(PyamlSide2Window):
 
         menuList = QtWidgets.QMenu(self)
         # add menubar
-        action1 = QtWidgets.QAction("reload", self)
+        action1 = QtWidgets.QAction("Reload", self)
         action1.triggered.connect(self.reload)
 
         action2 = QtWidgets.QAction("select file", self)
@@ -25,7 +25,7 @@ class MainWindow(PyamlSide2Window):
         menuList.addAction(action1)
         menuList.addAction(action2)
 
-        menu_button = QtWidgets.QPushButton("Menu", self)
+        menu_button = QtWidgets.QPushButton("Reload", self)
         menu_button.setMenu(menuList)
 
         self.show()
