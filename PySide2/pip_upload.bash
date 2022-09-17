@@ -1,4 +1,4 @@
-pip3 install wheel twine
+python -m pip install wheel twine
 rm -f -r *.egg-info/* dist/*
-python3 setup.py sdist bdist_wheel
-python3 -m twine upload --repository pypi dist/*
+python setup.py sdist bdist_wheel
+python -m twine upload --repository pypi dist/*
