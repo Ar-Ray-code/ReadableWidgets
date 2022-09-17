@@ -89,10 +89,7 @@ python3 <output .py (3rd step)> <input .yaml (3rd step)>
 
 <br>
 
-## Template
-
-<details>
-<summary>Previously (v0.3.2)</summary>
+## YAML
 
 See `examples/simple_gui.py`.
 
@@ -119,22 +116,19 @@ if __name__ == '__main__':
     sys.exit(app.exec_())
 ```
 
-<!-- Run `python3 <path-to-script>/simple_gui.py`. -->
-![](image/simple-gui-480p.png)
+### Test your YAML 📝
 
-## Test YAML 📝
-
-`pyamlside2_yaml` is preview feature app.
+`rw_view_yaml2pyside2` is preview feature app.
 
 ```bash
-pyamlside2_yaml <yaml-file-path or draw.io xml-file>
-# pyamlside2_yaml PySide2/drawio_xml/example.xml
+rw_view_yaml2pyside2 <yaml-file-path or draw.io xml-file>
+# rw_view_yaml2pyside2 PySide2/drawio_xml/example.xml
 ```
 
-## Elements (dev)
+### Elements (dev)
 In yaml, you can add the following elements defined in PyQt.Widgets This may be added in the future.
 
-- pushbutton : definition of QPushButton
+- qpushbutton : definition of QPushButton
 - qlabel : definition of QLabel 
 - qlcdnumber : definition of QLCDNumber
 - qprogressbar : definition of QProgressBar
@@ -179,4 +173,4 @@ slider2: # keyname
     - b
     - c
 ```
-</details>
+
